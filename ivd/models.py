@@ -5,6 +5,10 @@ class Skill(models.Model):
     title = models.CharField(max_length=100, null=False)
 
 
+class City(models.Model):
+    title = models.CharField(max_length=100, null=False)
+
+
 class User(models.Model):
     vk_id = models.IntegerField(null=False)
     balance = models.IntegerField(default=0)
@@ -24,6 +28,10 @@ class Quest(models.Model):
     is_quick = models.BooleanField(default=False)
     is_group = models.BooleanField(default=False)
     time_to_be_done = models.DateField(default=None)
+    city = models.ForeignKey(City, on_delete=models.CASCADE)
+    longitude = models.FloatField()
+    latitude = models.FloatField()
+    address = models.TextField()
 
 
 class UserQuest(models.Model):
