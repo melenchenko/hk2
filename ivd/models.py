@@ -17,6 +17,8 @@ class User(models.Model):
     speak_english = models.BooleanField(default=False)
     age = models.IntegerField(null=True)
     cloth_size = models.CharField(max_length=4, default='') #XS, ... , XXXL
+    city = models.ForeignKey(City, on_delete=models.CASCADE, null=True, default=None)
+    phone = models.CharField(max_length=15, default='')
 
 
 class BlackList(models.Model):
@@ -58,6 +60,7 @@ class Role(models.Model):
     title = models.CharField(max_length=100, null=False)
     description = models.TextField(null=True, default=None)
     quest = models.ForeignKey(Quest, on_delete=models.CASCADE)
+    need_users = models.IntegerField(default=1)
 
 
 class UserQuest(models.Model):
